@@ -25,6 +25,17 @@ html {
     margin-bottom: 30px;
 }
 
+.user-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
 .sidebar-links {
     display: flex;
     flex-direction: column;

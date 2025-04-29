@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -9,18 +10,65 @@
     <link rel="stylesheet" type="text/css" href="{% static 'accountdetails.css' %}">
 
 </head>
+
 <body>
 
-    <div class="container">
+    <div class="container"> <!--container for entire pages elements-->
         <div class="navbar"> <!--names the class navbar to contain the navbar elements-->
-            <img src="{% static 'images/skylogo.png' %}" alt="SkyHealth Logo" class="logo"> <!--image loaded from static and given alt text if image does not load-->
+            <img src="{% static 'images/skylogo.png' %}" alt="SkyHealth Logo" class="logo">
+            <!--image loaded from static and given alt text if image does not load-->
 
-            <div class="navbar-urls"> 
+            <div class="navbar-urls-button-container">
                 <a href="{% url 'dashboard' %}" class="navbar-buttons">Dashboard</a> <!--references dashboard url-->
-                <a href="{% url 'teamsummary' %}" class="navbar-buttons">Team Summary</a> <!--references teamsumarry url-->
+                <a href="{% url 'teamsummary' %}" class="navbar-buttons">Team Summary</a>
+                <!--references teamsumarry url-->
                 <a href="{% url 'register' %}" class="navbar-buttons">Log Out</a> <!--references register page url-->
             </div>
         </div>
 
+
+        <div class="accountdetailspage">
+            <div class="page-header">
+                <h1 class="page-title">Account Details</h1> <!--displays pages title-->
+                <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p> <!--displays current date and time-->
+            </div>
+
+            <div class="forms-layout"> <!--creates container for forms layout and uses class to later be edited by css-->
+                <div class="title">
+                    <h2>Personal Details</h2> <!--creates a header 2 and displays under account details-->
+                </div>
+
+                <div class="form-boxes"> <!--creates a nested container where all input fields will be-->
+    
+                    <div class="form-box"> <!--displays label-->
+                        <label>Name</label>
+                        <input type="text" id="name"> <!--creates input text box-->
+                    </div>
+                        
+                    <div class="form-box"> <!--using same class form-box for all buttons to edit all boxes using same css-->
+                        <label>Username</label>
+                        <input type="text" id="username">
+                    </div>
+                    
+
+                    <div class="form-box"> <!--displays role box-->
+                        <label>Role</label>
+                        <input type="text" id="role">
+                    </div>
+
+                    <div class="form-box">
+                        <label>Email</label>
+                        <input type="email" id="email"> <!--creates email input box allowing for email format text to be enetered-->
+                    </div>
+
+                    <div class="form-box">
+                        <label>Password</label>
+                        <input type="text" id="password"><!--displays users password back to them in plaintext-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
 </body>
+
 </html>

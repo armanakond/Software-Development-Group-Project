@@ -1,35 +1,35 @@
 .navbar {
-    width: 25%; /*sets width of navbar to 25%*/
-    background-color: #d9d9d9; /*sets backround colour to the colour picked*/
-    display: flex; /*creates flex container and allows for child elements to be displayed flexibily*/
-    flex-direction: column; /*displays elements in navbar in a column vertically*/
-    align-items: center; /*centers all navbar elements*/
-    padding-top: 20px; /*adds 20pixels of space at the top of element, increasing size of navbar*/
+    width: 25%;
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
 }
 
 .logo {
-    width: 80%; /*sets the width of the logo to 80%*/
-    margin-bottom: 40px; /*adds 40 pixels at the bottom*/
+    width: 80%;
+    margin-bottom: 40px;
 }
 
-.navbar-urls-button-container {
-    width: 100%; /*sets navbar url buttons container width to 100% of its container navbar*/
-    display: flex; /*creates flex container and allows for child elements to be displayed flexibily*/
-    flex-direction: column; /*displays elements in navbar in a column vertically*/
-    align-items: center; /*centers all navbar buttons*/
+.navbar-urls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .navbar-buttons {
-    width: 90%; /*sets width of button to 90% of its containers size*/
-    padding: 20px; /*creates 20pixel space inside each button in all directions*/
-    margin: 10px 0; /*creates 10 pixel space between each button element above and below*/
-    background-color: #c4c4c4; /*sets buttons background colour*/
-    text-align: center;/*aligns text inside button to center*/
-    text-decoration: none; /*removes underlining below text*/
-    color: black; /*sets text colour*/
-    font-size: 1.5rem; /*sets font size*/
-    font-weight: bold; /*sets the text to display as bold*/
-    border-radius: 10px; /*rounds the corners of each button by 10 pixels*/
+    width: 90%;
+    padding: 20px;
+    margin: 10px 0;
+    background-color: #c4c4c4;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 8px;
 }
 
 .container {

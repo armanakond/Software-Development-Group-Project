@@ -10,5 +10,5 @@ urlpatterns = [
     path('', include('dashboard.urls')),
     path('', include('voting.urls')),
     path('', include('visualization.urls')),
-    
+    path('', include('account_details.urls')),
 ]

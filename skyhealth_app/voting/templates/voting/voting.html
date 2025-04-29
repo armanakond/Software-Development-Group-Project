@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Health Check Flow</title>
+    <!-- Styling for the page -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -10,14 +12,13 @@
             margin: 0;
             padding: 20px;
         }
-
         .container {
             background: white;
             border-radius: 10px;
             padding: 30px;
             max-width: 700px;
             margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .step {
@@ -50,9 +51,22 @@
             border: 2px solid #ccc;
         }
 
-        .green { background-color: green; }
-        .amber { background-color: orange; }
-        .red { background-color: red; }
+        .green {
+            background-color: green;
+        }
+
+        .amber {
+            background-color: orange;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .circle.selected {
+            border: 4px solid rgb(0, 95, 227);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        }
 
         textarea {
             width: 100%;
@@ -82,140 +96,285 @@
         button:disabled {
             background-color: #aaa;
         }
-        .circle.selected {
-        border: 4px solid rgb(0, 95, 227); /* This will highlight whatever colour the user has selected*/
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-}
 
-    </style>
-</head>
-<h1>Sky Voting Page</h1>
-<img src="skylogo.png"
-<body>
-
-<div class="container">
-    <form id="healthForm">
-        <!-- Step Template -->
-        <div class="step active">
-            <h2>Delivering Value: Are we consistently delivering value with our customers?</h2>
-            <div class="vote-options">
-                <label><input type="radio" name="q1_vote"><div class="circle green"></div></label>
-                <label><input type="radio" name="q1_vote"><div class="circle amber"></div></label>
-                <label><input type="radio" name="q1_vote"><div class="circle red"></div></label>
-            </div>
-            <textarea placeholder="Add any feedback... (optional)"></textarea>
-            <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-            <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
-        </div>
-
-        <div class="step">
-            <h2>Learning: Did you manage to learn new things to help you grow?</h2>
-            <div class="vote-options">
-                <label><input type="radio" name="q2_vote"><div class="circle green"></div></label>
-                <label><input type="radio" name="q2_vote"><div class="circle amber"></div></label>
-                <label><input type="radio" name="q2_vote"><div class="circle red"></div></label>
-            </div>
-            <textarea placeholder="Add any feedback... (optional)"></textarea>
-            <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-            <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
-        </div>
-
-        <div class="step">
-            <h2>Speed: Was the speed of the work suitable for the way you work?</h2>
-            <div class="vote-options">
-                <label><input type="radio" name="q3_vote"><div class="circle green"></div></label>
-                <label><input type="radio" name="q3_vote"><div class="circle amber"></div></label>
-                <label><input type="radio" name="q3_vote"><div class="circle red"></div></label>
-            </div>
-            <textarea placeholder="Add any feedback... (optional)"></textarea>
-            <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-            <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
-        </div>
-
-        <div class="step">
-            <h2>Easy to release: Is it easy to release and get on with the work?</h2>
-            <div class="vote-options">
-                <label><input type="radio" name="q4_vote"><div class="circle green"></div></label>
-                <label><input type="radio" name="q4_vote"><div class="circle amber"></div></label>
-                <label><input type="radio" name="q4_vote"><div class="circle red"></div></label>
-            </div>
-            <textarea placeholder="Add any feedback... (optional)"></textarea>
-            <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-            <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
-        </div>
-
-        <div class="step">
-            <h2>Fun: How much fun did you have working in this team during this session?</h2>
-            <div class="vote-options">
-                <label><input type="radio" name="q5_vote"><div class="circle green"></div></label>
-                <label><input type="radio" name="q5_vote"><div class="circle amber"></div></label>
-                <label><input type="radio" name="q5_vote"><div class="circle red"></div></label>
-            </div>
-            <textarea placeholder="Add any feedback... (optional)"></textarea>
-            <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-            <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
-        </div>
-
-        <div class="step">
-            <h2>Equipment: Have the equipment provided been satisfactory for you?</h2>
-            <div class="vote-options">
-                <label><input type="radio" name="q6_vote"><div class="circle green"></div></label>
-                <label><input type="radio" name="q6_vote"><div class="circle amber"></div></label>
-                <label><input type="radio" name="q6_vote"><div class="circle red"></div></label>
-            </div>
-            <textarea placeholder="Add any feedback... (optional)"></textarea>
-            <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-            <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
-        </div>
-
-        <div class="nav-buttons">
-            <button type="button" id="prevBtn" onclick="nextStep(-1)">Previous</button>
-            <button type="button" id="nextBtn" onclick="nextStep(1)">Next</button>
-        </div>
-    </form>
-</div>
-
-<script>
-    let currentStep = 0;
-    const steps = document.querySelectorAll('.step');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-
-    function showStep(n) {
-        steps.forEach((step, index) => step.classList.toggle('active', index === n));
-        prevBtn.disabled = n === 0;
-        nextBtn.textContent = n === steps.length - 1 ? "Submit" : "Next";
-    }
-
-    function nextStep(n) {
-        if (currentStep + n >= 0 && currentStep + n < steps.length) {
-            currentStep += n;
-            showStep(currentStep);
-        } else if (currentStep + n >= steps.length) {
-            alert("Form submitted! (No backend yet)");
-            document.getElementById('healthForm').reset();
-            currentStep = 0;
-            showStep(currentStep);
+        /* Sidebar layout */
+        /* Sidebar layout container */
+        .layout {
+            display: flex;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
         }
-    }
 
-    showStep(currentStep);
-    
-    document.querySelectorAll('.vote-options').forEach(group => {
-    const radios = group.querySelectorAll('input[type="radio"]');
-    const circles = group.querySelectorAll('.circle');
+        /* Sidebar style */
+        .sidebar {
+            width: 250px;
+            background-color: #d3d3d3;
+            /* light grey */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            border-right: 1px solid #aaa;
+        }
 
-    radios.forEach((radio, idx) => {
-        radio.addEventListener('change', () => {
-            
-            circles.forEach(c => c.classList.remove('selected'));
-            
-            circles[idx].classList.add('selected');
-        });
-    });
-});
+        /* Logo image */
+        .logo {
+            width: 80%;
+            margin-bottom: 40px;
+        }
 
-</script>
+        /* Sidebar buttons container */
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* style for sidebar buttons */
+        .sidebar-button {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-top: 1px solid #bbb;
+            border-bottom: 1px solid #bbb;
+            background-color: #d3d3d3;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar-button:hover {
+            background-color: #c0c0c0;
+        }
+
+        /* Log out button with icon */
+        .logout-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Main content area -->
+            <img src="skyhealth_app/voting/templates/skylogo.png" alt="SkyHealth Logo" class="logo">
+            <div class="sidebar-links">
+                <a href="{% url 'dashboard' %}" class="sidebar-button">DASHBOARD</a>
+                <a href="{% url 'register' %}" class="sidebar-button logout-button">LOG OUT</a>
+
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <h1>Sky Health Voting Page</h1>
+                <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
+            </div>
+<!-- Voting colour container  here -->
+            <div class="container">
+                <form id="healthForm">
+                    <!-- Step Template -->
+                    <div class="step active">
+                        <!-- Question -->
+                        <h2>Delivering Value: Are we consistently delivering value with our customers?</h2>
+                        <div class="vote-options">
+                            <!-- Green vote -->
+                            <label><input type="radio" name="q1_vote">
+                                <div class="circle green"></div>
+                            </label>
+                            <!-- Amber vote -->
+                            <label><input type="radio" name="q1_vote">
+                                <div class="circle amber"></div>
+                            </label>
+                            <!-- Red vote -->
+                            <label><input type="radio" name="q1_vote">
+                                <div class="circle red"></div>
+                            </label>
+                        </div>
+                        <!-- Feedback fields -->
+                        <textarea placeholder="Add any feedback... (optional)"></textarea>
+                        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    </div>
+
+                    <div class="step">
+                        <!-- Question -->
+                        <h2>Learning: Did you manage to learn new things to help you grow?</h2>
+                        <div class="vote-options">
+                            <!-- Green vote -->
+                            <label><input type="radio" name="q2_vote">
+                                <div class="circle green"></div>
+                            </label>
+                            <!-- Amber vote -->
+                            <label><input type="radio" name="q2_vote">
+                                <div class="circle amber"></div>
+                            </label>
+                            <!-- Red vote -->
+                            <label><input type="radio" name="q2_vote">
+                                <div class="circle red"></div>
+                            </label>
+                        </div>
+                        <!-- Feedback fields -->
+                        <textarea placeholder="Add any feedback... (optional)"></textarea>
+                        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    </div>
+
+                    <div class="step">
+                        <!-- Question -->
+                        <h2>Speed: Was the speed of the work suitable for the way you work?</h2>
+                        <div class="vote-options">
+                            <!-- Green vote -->
+                            <label><input type="radio" name="q3_vote">
+                                <div class="circle green"></div>
+                            </label>
+                            <!-- Amber vote -->
+                            <label><input type="radio" name="q3_vote">
+                                <div class="circle amber"></div>
+                            </label>
+                            <!-- Red vote -->
+                            <label><input type="radio" name="q3_vote">
+                                <div class="circle red"></div>
+                            </label>
+                        </div>
+                        <!-- Feedback fields -->
+                        <textarea placeholder="Add any feedback... (optional)"></textarea>
+                        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    </div>
+
+                    <div class="step">
+                        <!-- Question -->
+                        <h2>Easy to release: Is it easy to release and get on with the work?</h2>
+                        <div class="vote-options">
+                            <!-- Green vote -->
+                            <label><input type="radio" name="q4_vote">
+                                <div class="circle green"></div>
+                            </label>
+                            <!-- Amber vote -->
+                            <label><input type="radio" name="q4_vote">
+                                <div class="circle amber"></div>
+                            </label>
+                            <!-- Red vote -->
+                            <label><input type="radio" name="q4_vote">
+                                <div class="circle red"></div>
+                            </label>
+                        </div>
+                        <!-- Feedback fields -->
+                        <textarea placeholder="Add any feedback... (optional)"></textarea>
+                        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    </div>
+
+                    <div class="step">
+                        <!-- Question -->
+                        <h2>Fun: How much fun did you have working in this team during this session?</h2>
+                        <div class="vote-options">
+                            <!-- Green vote -->
+                            <label><input type="radio" name="q5_vote">
+                                <div class="circle green"></div>
+                            </label>
+                            <!-- Amber vote -->
+                            <label><input type="radio" name="q5_vote">
+                                <div class="circle amber"></div>
+                            </label>
+                            <!-- Red vote -->
+                            <label><input type="radio" name="q5_vote">
+                                <div class="circle red"></div>
+                            </label>
+                        </div>
+                        <!-- Feedback field -->
+                        <textarea placeholder="Add any feedback... (optional)"></textarea>
+                        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    </div>
+
+                    <div class="step">
+                        <!-- Question -->
+                        <h2>Equipment: Have the equipment provided been satisfactory for you?</h2>
+                        <div class="vote-options">
+                            <!-- Green vote -->
+                            <label><input type="radio" name="q6_vote">
+                                <div class="circle green"></div>
+                            </label>
+                            <!-- Amber vote -->
+                            <label><input type="radio" name="q6_vote">
+                                <div class="circle amber"></div>
+                            </label>
+                            <!-- Red vote -->
+                            <label><input type="radio" name="q6_vote">
+                                <div class="circle red"></div>
+                            </label>
+                        </div>
+                        <!-- Feedback field -->
+                        <textarea placeholder="Add any feedback... (optional)"></textarea>
+                        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    </div>
+<!-- Navigation buttons -->
+                    <div class="nav-buttons">
+                        <button type="button" id="prevBtn" onclick="nextStep(-1)">Previous</button>
+                        <button type="button" id="nextBtn" onclick="nextStep(1)">Next</button>
+                    </div>
+                </form>
+            </div>
+<!-- Script for managing step navigation and voting selection -->
+            <script>
+                let currentStep = 0;
+                const steps = document.querySelectorAll('.step');
+                const nextBtn = document.getElementById('nextBtn');
+                const prevBtn = document.getElementById('prevBtn');
+            // Shows the current step and adjusts button states
+
+                function showStep(n) {
+                    steps.forEach((step, index) => step.classList.toggle('active', index === n));
+                    prevBtn.disabled = n === 0;
+                    nextBtn.textContent = n === steps.length - 1 ? "Submit" : "Next";
+                }
+                // Moves to the next or previous step
+                function nextStep(n) {
+                    if (currentStep + n >= 0 && currentStep + n < steps.length) {
+                        currentStep += n;
+                        showStep(currentStep);
+                    } else if (currentStep + n >= steps.length) {
+                        alert("Form submitted! (No backend yet)");
+                        document.getElementById('healthForm').reset();
+                        currentStep = 0;
+                        showStep(currentStep);
+                    }
+                }
+// Initialize the first step
+                showStep(currentStep);
+
+                document.querySelectorAll('.vote-options').forEach(group => {
+                    const radios = group.querySelectorAll('input[type="radio"]');
+                    const circles = group.querySelectorAll('.circle');
+
+                    radios.forEach((radio, idx) => {
+                        radio.addEventListener('change', () => {
+
+                            circles.forEach(c => c.classList.remove('selected'));
+
+                            circles[idx].classList.add('selected');
+                        });
+                    });
+                });
+
+            </script>
 
 </body>
 </html>
+

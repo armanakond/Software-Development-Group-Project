@@ -5,7 +5,7 @@ html {
     height: 100%;
     font-family: Arial, sans-serif;
 }
-
+/*2 column layout*/
 .container {
     display: flex;
     height: 100vh;
@@ -45,7 +45,7 @@ html {
 .sidebar-button:hover {
     text-decoration: underline;
 }
-
+/*main content area*/
 .main {
     flex-grow: 1;
     background-color: #e0e0e0;
@@ -64,7 +64,7 @@ html {
 .datetime {
     font-size: 14px;
 }
-
+/*filter form styles*/
 .form-container {
     margin-top: 50px;
     display: flex;
@@ -92,7 +92,7 @@ select {
     padding: 10px;
     margin-bottom: 10px;
 }
-
+/*place holder for charts*/
 .chart-container {
     display: flex;
     justify-content: center;
@@ -114,7 +114,7 @@ select {
 .legend-item {
     font-size: 1rem;
 }
-
+/*action buttons*/
 .footer {
     display: flex;
     justify-content: center;

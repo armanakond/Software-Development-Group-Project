@@ -19,13 +19,13 @@
                 <a href="{% url 'register' %}" class="sidebar-button">LOG OUT</a>
             </div>
         </div>
-
+<!--Allows users to pick filters before generating a trends visualisation-->
         <div class="main">
             <div class="header">
                 <h1>Sky <span>Healthcheck</span></h1>
                 <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
             </div>
-
+<!--filter form starts from here-->
             <div class="form-container">
                 <div class="filters">
                     <div class="filter-group">
@@ -56,7 +56,7 @@
                         </select>
                     </div>
                 </div>
-
+<!--Next step button-->
                 <div class="footer">
                     <button class="next-page-button">COMMENTS</button>
                 </div>

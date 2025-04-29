@@ -32,3 +32,62 @@
     border-radius: 10px; /*rounds the corners of each button by 10 pixels*/
 }
 
+.container {
+    display: flex; /*creates flex container and allows for child elements to be displayed flexibily*/
+}
+
+.accountdetailspage {
+    flex: 1; /*fills entire container in all directions by flexing (shrinking or growing to fit)*/
+    background-color: #e6e6e6; /*sets backround colour */
+    padding: 30px 50px; /*creates 30 pixel space inside, above and below in the container. creates 50 pixels left and right in element*/
+}
+
+.page-header {
+    display: flex; /*creates flex container and allows for child elements to be displayed flexibily*/
+    justify-content: space-between; /*creates equal space between elemets in page header*/
+    align-items: center; /*centers all elements in page header*/
+    margin-bottom: 30px; /*creates 30 pixel space below the page header element*/
+}
+
+.page-title {
+    font-size: 2rem; /*sets title font size*/
+    margin: 0; /*sets margin to 0*/
+}
+
+.datetime {
+    font-size: 1.2rem; /*sets time text font size*/
+    color: #4a4a4a; /*sets datetime text colour*/
+}
+
+.title h2 {
+    font-size: 1.5rem; /*sets header 2's font size*/
+    margin-bottom: 20px; /*creates 20 pixel space below the header element*/
+}
+
+.forms-layout {
+    background-color: transparent; /*makes forms backround transparent*/
+}
+
+.form-boxes {
+    display: flex; /*creates flex container and allows for child elements to be displayed flexibily*/
+    flex-direction: column;  /*displays form boxes in a column vertically*/
+    gap: 20px; /*creates 20 pixel gap between each box*/
+}
+
+.form-box {
+    display: flex; /*creates flex container and allows for child elements to be displayed flexibily*/
+    flex-direction: column; /*displays form box in a vertical column*/
+}
+
+.form-box label {
+    margin-bottom: 5px; /*creates 5 pixel space below each box label element*/
+    font-weight: bold; /*sets font to bold*/
+}
+
+.form-box input { 
+    padding: 10px; /*creates 10 pixel space inside each text box in all directions*/
+    font-size: 1rem; /*sets boxes input text font size*/
+    border: 1px solid #000000; /*adds coloured border around input box*/
+    border-radius: 5px; /*rounds the corner of the input text box*/
+    background-color: #fff; /*sets backround colour of input box to white*/
+}

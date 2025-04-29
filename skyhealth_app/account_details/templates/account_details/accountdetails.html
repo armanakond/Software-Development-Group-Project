@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky Healthcheck Dashboard</title>
+    <title>Sky Healthcheck Account Details</title>
+    {% load static %} <!-- loads static to retrieve image and css file-->
+    <link rel="stylesheet" type="text/css" href="{% static 'accountdetails.css' %}">
+
 </head>
 <body>
-    
+
+    <div class="container">
+        <div class="navbar"> <!--names the class navbar to contain the navbar elements-->
+            <img src="{% static 'images/skylogo.png' %}" alt="SkyHealth Logo" class="logo"> <!--image loaded from static and given alt text if image does not load-->
+
+            <div class="navbar-urls"> 
+                <a href="{% url 'dashboard' %}" class="navbar-buttons">Dashboard</a> <!--references dashboard url-->
+                <a href="{% url 'teamsummary' %}" class="navbar-buttons">Team Summary</a> <!--references teamsumarry url-->
+                <a href="{% url 'register' %}" class="navbar-buttons">Log Out</a> <!--references register page url-->
+            </div>
+        </div>
+
 </body>
 </html>

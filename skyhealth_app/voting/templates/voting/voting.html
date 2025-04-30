@@ -163,8 +163,13 @@
             flex-grow: 1;
             padding: 30px;
         }
+        .form-container {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
     </style>
-
 </head>
 
 <body>
@@ -187,6 +192,7 @@
 <!-- Voting container starts -->
 <div class="container">
     <form id="healthForm">
+        <div class="form-container">
         <select name="session_name" required>
             <option value="" disabled selected>SESSION NAME</option>
             <!-- Inisde these options we can add the stuff from database -->
@@ -199,8 +205,9 @@
 
         <select name="team_name" required>
             <option value="" disabled selected>TEAM NAME</option>
-
+            
         </select>
+    </div>
         <div style="margin-bottom: 20px;">
             <h3>Colour Key:</h3>
             <ul style="list-style: none; padding: 0;">

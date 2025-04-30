@@ -47,11 +47,12 @@
         }
 
         .circle {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            border: 2px solid #ccc;
+            border: 3px solid #ccc;
+            display: inline-block;
         }
 
         .green {
@@ -207,24 +208,24 @@
                         <select name="session_name" required>
                             <option value="" disabled selected>SESSION NAME</option>
                             {% for name in session_names %}
-                              <option value="{{ name }}">{{ name }}</option>
+                            <option value="{{ name }}">{{ name }}</option>
                             {% endfor %}
-                          </select>
-                          
-                          <select name="session_date" required>
+                        </select>
+
+                        <select name="session_date" required>
                             <option value="" disabled selected>SESSION DATE</option>
                             {% for date in session_dates %}
-                              <option value="{{ date }}">{{ date }}</option>
+                            <option value="{{ date }}">{{ date }}</option>
                             {% endfor %}
-                          </select>
-                          
-                          <select name="team_name" required>
+                        </select>
+
+                        <select name="team_name" required>
                             <option value="" disabled selected>TEAM NAME</option>
                             {% for team in team_names %}
-                              <option value="{{ team }}">{{ team }}</option>
+                            <option value="{{ team }}">{{ team }}</option>
                             {% endfor %}
-                          </select>                          
-                          
+                        </select>
+
                     </div>
 
                     {% comment %} QUESTION 1 {% endcomment %}
@@ -234,7 +235,8 @@
                                 class="circle green"></span></label>
                         <label><input type="radio" name="q1_vote" value="amber" required><span
                                 class="circle amber"></span></label>
-                        <label><input type="radio" name="q1_vote" value="red" required><span class="circle red"></span></label>
+                        <label><input type="radio" name="q1_vote" value="red" required><span
+                                class="circle red"></span></label>
                     </div>
                     <textarea name="q1_feedback" placeholder="Add any feedback... (optional)"></textarea>
                     <textarea name="q1_team_actions" placeholder="Actions the team can take..."></textarea>
@@ -247,7 +249,8 @@
                                 class="circle green"></span></label>
                         <label><input type="radio" name="q2_vote" value="amber" required><span
                                 class="circle amber"></span></label>
-                        <label><input type="radio" name="q2_vote" value="red" required><span class="circle red"></span></label>
+                        <label><input type="radio" name="q2_vote" value="red" required><span
+                                class="circle red"></span></label>
                     </div>
                     <textarea name="q2_feedback" placeholder="Add any feedback... (optional)"></textarea>
                     <textarea name="q2_team_actions" placeholder="Actions the team can take..."></textarea>
@@ -260,7 +263,8 @@
                                 class="circle green"></span></label>
                         <label><input type="radio" name="q3_vote" value="amber" required><span
                                 class="circle amber"></span></label>
-                        <label><input type="radio" name="q3_vote" value="red" required><span class="circle red"></span></label>
+                        <label><input type="radio" name="q3_vote" value="red" required><span
+                                class="circle red"></span></label>
                     </div>
                     <textarea name="q3_feedback" placeholder="Add any feedback... (optional)"></textarea>
                     <textarea name="q3_team_actions" placeholder="Actions the team can take..."></textarea>
@@ -273,7 +277,8 @@
                                 class="circle green"></span></label>
                         <label><input type="radio" name="q4_vote" value="amber" required><span
                                 class="circle amber"></span></label>
-                        <label><input type="radio" name="q4_vote" value="red" required><span class="circle red"></span></label>
+                        <label><input type="radio" name="q4_vote" value="red" required><span
+                                class="circle red"></span></label>
                     </div>
                     <textarea name="q4_feedback" placeholder="Add any feedback... (optional)"></textarea>
                     <textarea name="q4_team_actions" placeholder="Actions the team can take..."></textarea>
@@ -286,7 +291,8 @@
                                 class="circle green"></span></label>
                         <label><input type="radio" name="q5_vote" value="amber" required><span
                                 class="circle amber"></span></label>
-                        <label><input type="radio" name="q5_vote" value="red" required><span class="circle red"></span></label>
+                        <label><input type="radio" name="q5_vote" value="red" required><span
+                                class="circle red"></span></label>
                     </div>
                     <textarea name="q5_feedback" placeholder="Add any feedback... (optional)"></textarea>
                     <textarea name="q5_team_actions" placeholder="Actions the team can take..."></textarea>
@@ -299,7 +305,8 @@
                                 class="circle green"></span></label>
                         <label><input type="radio" name="q6_vote" value="amber" required><span
                                 class="circle amber"></span></label>
-                        <label><input type="radio" name="q6_vote" value="red" required><span class="circle red"></span></label>
+                        <label><input type="radio" name="q6_vote" value="red" required><span
+                                class="circle red"></span></label>
                     </div>
                     <textarea name="q6_feedback" placeholder="Add any feedback... (optional)"></textarea>
                     <textarea name="q6_team_actions" placeholder="Actions the team can take..."></textarea>

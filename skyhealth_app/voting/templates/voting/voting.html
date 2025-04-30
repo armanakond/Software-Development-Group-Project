@@ -195,31 +195,14 @@
             </div>
         </div>
         <div class="main-content">
-            <div class="header">
-                <h1>Sky Health Voting Page</h1>
-                <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
-            </div>
-            <div class="container">
-                <div style="margin-bottom: 20px;">
-                    <h3>Colour Key:</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 8px;">
-                            <span class="circle green" style="display: inline-block; vertical-align: middle;"></span>
-                            <span style="margin-left: 10px;">No Improvements Needed</span>
-                        </li>
-                        <li style="margin-bottom: 8px;">
-                            <span class="circle amber" style="display: inline-block; vertical-align: middle;"></span>
-                            <span style="margin-left: 10px;">Minor Improvements Needed</span>
-                        </li>
-                        <li>
-                            <span class="circle red" style="display: inline-block; vertical-align: middle;"></span>
-                            <span style="margin-left: 10px;">Major Improvements Needed</span>
-                        </li>
-                    </ul>
-                </div>
                 {# voting/templates/voting/voting.html #}
                 <form method="post" action="{% url 'voting' %}" id="healthForm">
                     {% csrf_token %}
+                    <div class="header">
+                        <h1>Sky Health Voting Page</h1>
+                        <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
+                    </div>
+                    <div class="container">
 
                     <div class="form-row">
                         <select name="session_name" required>
@@ -242,9 +225,24 @@
                             <option value="{{ team }}">{{ team }}</option>
                             {% endfor %}
                         </select>
-
                     </div>
-
+                    <div style="margin-bottom: 20px;">
+                        <h3>Colour Key:</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 8px;">
+                                <span class="circle green" style="display: inline-block; vertical-align: middle;"></span>
+                                <span style="margin-left: 10px;">No Improvements Needed</span>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <span class="circle amber" style="display: inline-block; vertical-align: middle;"></span>
+                                <span style="margin-left: 10px;">Minor Improvements Needed</span>
+                            </li>
+                            <li>
+                                <span class="circle red" style="display: inline-block; vertical-align: middle;"></span>
+                                <span style="margin-left: 10px;">Major Improvements Needed</span>
+                            </li>
+                        </ul>
+                    </div>
                     {% comment %} QUESTION 1 {% endcomment %}
                     <h2>1. Delivering Value: Are we consistently delivering value with our customers?</h2>
                     <div class="vote-options">

@@ -199,29 +199,30 @@
             </div>
             <!-- Voting container starts -->
             <div class="container">
-                <form id="healthForm">
-                    <div class="form-container">
-                        <div class="session-info">
-                            <select name="session_name" required>
-                                <option value="" disabled selected>SESSION NAME</option>
-                                <!-- Inisde these options we can add the stuff from database -->
-                            </select>
-                        </div>
-
-                        <div class="session-info">
-                            <select name="session_date" required>
-                                <option value="" disabled selected>SESSION DATE</option>
-
-                            </select>
-                        </div>
-
-                        
-                        <select name="team_name" required>
-                            <option value="" disabled selected>TEAM NAME</option>
-
-                        </select>
-                    </div>
+                <form method="post" action="{% url 'voting' %}" id="healthForm">
+                    {% csrf_token %}
                     <div style="margin-bottom: 20px;">
+                        <div class="form-container">
+                            <div class="session-info">
+                                <select name="session_name" >
+                                    <option value="" disabled selected>SESSION NAME</option>
+                                    <!-- Inisde these options we can add the stuff from database -->
+                                </select>
+                            </div>
+    
+                            <div class="session-info">
+                                <select name="session_date" >
+                                    <option value="" disabled selected>SESSION DATE</option>
+    
+                                </select>
+                            </div>
+    
+    
+                            <select name="team_name" >
+                                <option value="" disabled selected>TEAM NAME</option>
+    
+                            </select>
+                        </div>
                         <h3>Colour Key:</h3>
                         <ul style="list-style: none; padding: 0;">
                             <li style="margin-bottom: 8px;">
@@ -379,19 +380,6 @@
                     });
                 });
 
-                // Form submission handler with value logging
-                document.getElementById('healthForm').addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    const formData = new FormData(this);
-                    for (let [key, value] of formData.entries()) {
-                        console.log(`${key}: ${value}`);
-                    }
-
-                    alert("Form submitted! (See console for values)");
-                    this.reset();
-                    document.querySelectorAll('.circle').forEach(c => c.classList.remove('selected'));
-                });
             </script>
 
 </body>

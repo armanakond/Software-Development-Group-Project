@@ -5,27 +5,30 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('accounts', '0001_initial'),
-        ('auth', '0012_alter_user_first_name_max_length'),
+    dependencies = [ #0001_initial is from accounts app
+        ('accounts', '0001_initial'), 
+        ('auth', '0012_alter_user_first_name_max_length'), #0012_alter_user_first_name_max_length is in Djangos built in auth app
     ]
 
     operations = [
-        migrations.AlterModelOptions(
+        migrations.AlterModelOptions( #update model metadata for django admin  as well as other display
             name='accountentry',
             options={'verbose_name': 'Account Entry', 'verbose_name_plural': 'Account Entries'},
         ),
-        migrations.RemoveField(
+        migrations.RemoveField( # remove 'created' from accountentry model. 
             model_name='accountentry',
             name='created',
         ),
-        migrations.AddField(
+        migrations.AddField(   #add a new name field to accountentry model
+            
             model_name='accountentry',
             name='name',
             field=models.CharField(default=12, help_text='Name of this account entry', max_length=150, unique=True),
             preserve_default=False,
         ),
-        migrations.AddField(
+
+        #add manytomany field which link to djangos permission system
+        migrations.AddField(   
             model_name='accountentry',
             name='permissions',
             field=models.ManyToManyField(blank=True, help_text='The permissions this account entry grants', to='auth.permission', verbose_name='permissions'),

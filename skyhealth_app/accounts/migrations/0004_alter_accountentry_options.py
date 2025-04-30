@@ -5,10 +5,13 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
+
+#migration 0003_team from accounts is used.
     dependencies = [
         ('accounts', '0003_team'),
     ]
 
+#verbose_name is singular like Employee and the verbose_name_plural is plural like Employees.
     operations = [
         migrations.AlterModelOptions(
             name='accountentry',

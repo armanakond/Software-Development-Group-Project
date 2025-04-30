@@ -183,7 +183,7 @@
                 <h1>Sky Health Voting Page</h1>
                 <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
             </div>
-<!-- Voting colour container  here -->
+<!-- Voting container starts -->
 <div class="container">
     <form id="healthForm">
         <!-- Question 1 -->
@@ -208,7 +208,6 @@
         <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
         <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
 
-        <!-- Repeat same structure for remaining 4 questions -->
 
         <h2>Speed: Was the speed of the work suitable for the way you work?</h2>
         <div class="vote-options">
@@ -257,9 +256,7 @@
     </form>
 </div>
 
-<!-- Replace the script section with this: -->
 <script>
-    // Circle highlight logic
     document.querySelectorAll('.vote-options').forEach(group => {
         const radios = group.querySelectorAll('input[type="radio"]');
         const circles = group.querySelectorAll('.circle');
@@ -272,7 +269,7 @@
         });
     });
 
-    // Handle form submission
+    // form submission
     document.getElementById('healthForm').addEventListener('submit', function (e) {
         e.preventDefault();
         alert("Form submitted! (No backend yet)");

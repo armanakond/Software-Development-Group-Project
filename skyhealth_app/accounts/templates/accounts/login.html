@@ -18,15 +18,14 @@
             <h2>LOG IN</h2>
             <form method="POST">
                 {% csrf_token %}
-                <input type="email" placeholder="Enter email" required>
-                <input type="password" placeholder="Enter password" required>
+                <input name="username" type="text"     placeholder="Enter username" required>
+                <input name="password" type="password" placeholder="Enter password" required>
                 <div class="form-footer">
-                    <p>Back to <a href="{% url 'register' %}">Register</a></p> <!--url back to registration page-->
-
-                    <p>Log in as <a href="/admin/">Admin</a></p> <!--redirect to django admin login-->
-                    <button type="submit">LOG IN</button> <!--login button-->
+                  <p>Back to <a href="{% url 'register' %}">Register</a></p>
+                  <p>Log in as <a href="/admin/">Admin</a></p>
+                  <button type="submit">LOG IN</button>
                 </div>
-            </form>
+              </form>
         </div>
     </div>
 </body>

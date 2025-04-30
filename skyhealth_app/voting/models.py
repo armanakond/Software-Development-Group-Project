@@ -1,33 +1,46 @@
-from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
 
-class SurveySubmission(models.Model):
-    user       = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
+
+
+#Model.py code for healthvote section of application
+class HealthVote(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    session_name = models.CharField(max_length=100)
+    session_date = models.CharField(max_length=100)
+    team_name = models.CharField(max_length=100)
+
+    q1_vote = models.CharField(max_length=10)
+    q1_feedback = models.TextField(blank=True)
+    q1_team_actions = models.TextField(blank=True)
+    q1_org_solutions = models.TextField(blank=True)
+
+    q2_vote = models.CharField(max_length=10)
+    q2_feedback = models.TextField(blank=True)
+    q2_team_actions = models.TextField(blank=True)
+    q2_org_solutions = models.TextField(blank=True)
+
+    q3_vote = models.CharField(max_length=10)
+    q3_feedback = models.TextField(blank=True)
+    q3_team_actions = models.TextField(blank=True)
+    q3_org_solutions = models.TextField(blank=True)
+
+    q4_vote = models.CharField(max_length=10)
+    q4_feedback = models.TextField(blank=True)
+    q4_team_actions = models.TextField(blank=True)
+    q4_org_solutions = models.TextField(blank=True)
+
+    q5_vote = models.CharField(max_length=10)
+    q5_feedback = models.TextField(blank=True)
+    q5_team_actions = models.TextField(blank=True)
+    q5_org_solutions = models.TextField(blank=True)
+
+    q6_vote = models.CharField(max_length=10)
+    q6_feedback = models.TextField(blank=True)
+    q6_team_actions = models.TextField(blank=True)
+    q6_org_solutions = models.TextField(blank=True)
+
+    submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user} @ {self.created_at:%Y-%m-%d %H:%M}"
-
-class SurveyAnswer(models.Model):
-    CHOICES = [
-        ('green', 'Green'),
-        ('amber', 'Amber'),
-        ('red',   'Red'),
-    ]
-
-    submission      = models.ForeignKey(
-                          SurveySubmission,
-                          related_name='answers',
-                          on_delete=models.CASCADE
-                      )
-    question_number = models.PositiveSmallIntegerField()
-    choice          = models.CharField(max_length=5, choices=CHOICES)
-    feedback        = models.TextField(blank=True)
-    team_actions    = models.TextField(blank=True)
-    org_solutions   = models.TextField(blank=True)
-
-    class Meta:
-        ordering = ['submission', 'question_number']
-
-    def __str__(self):
-        return f"Q{self.question_number}: {self.choice}"
+        return f"{self.user.username} - {self.session_name} - {self.session_date}"

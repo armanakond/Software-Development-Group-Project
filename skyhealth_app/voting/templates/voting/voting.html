@@ -198,28 +198,33 @@
                 <h1>Sky Health Voting Page</h1>
                 <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
             </div>
-            <!-- Voting container starts -->
             <div class="container">
                 {# voting/templates/voting/voting.html #}
                 <form method="post" action="{% url 'voting' %}" id="healthForm">
                     {% csrf_token %}
 
-                    <!-- session/team selectors -->
                     <div class="form-row">
-                        <select name="session_name" >
+                        <select name="session_name" required>
                             <option value="" disabled selected>SESSION NAME</option>
-                            <!-- {% for s in sessions %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %} -->
-                        </select>
-
-                        <select name="session_date" >
+                            {% for name in session_names %}
+                              <option value="{{ name }}">{{ name }}</option>
+                            {% endfor %}
+                          </select>
+                          
+                          <select name="session_date" required>
                             <option value="" disabled selected>SESSION DATE</option>
-                            <!-- {% for s in sessions %}<option value="{{ s.date }}">{{ s.date }}</option>{% endfor %} -->
-                        </select>
-
-                        <select name="team_name" >
+                            {% for date in session_dates %}
+                              <option value="{{ date }}">{{ date }}</option>
+                            {% endfor %}
+                          </select>
+                          
+                          <select name="team_name" required>
                             <option value="" disabled selected>TEAM NAME</option>
-                            <!-- {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %} -->
-                        </select>
+                            {% for team in team_names %}
+                              <option value="{{ team }}">{{ team }}</option>
+                            {% endfor %}
+                          </select>                          
+                          
                     </div>
 
                     {% comment %} QUESTION 1 {% endcomment %}

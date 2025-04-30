@@ -91,3 +91,9 @@
     border-radius: 5px; /*rounds the corner of the input text box*/
     background-color: #fff; /*sets backround colour of input box to white*/
 }
+
+.submit {
+    padding: 20px; /*creates 20 pixel space in all directions within button*/
+    border-radius: 10px; /*rounds corners of button*/
+    font-size: 1.5rem; /*sets font size*/
+}

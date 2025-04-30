@@ -17,10 +17,10 @@
         <div class="signup-box">
             <h2>SIGN UP</h2>
             <form method="post">
-                <input type="text" placeholder="First name" required>
-                <input type="text" placeholder="Enter username" required>
-                <input type="email" placeholder="Enter email" required>
-                <input type="password" placeholder="Enter password" required>
+                <input name="first_name" type="text" placeholder="First name" required>
+                <input name="username" type="text" placeholder="Enter username" required>
+                <input name="email" type="email" placeholder="Enter email" required>
+                <input name="password" type="password" placeholder="Enter password" required>
                 <div class="form-footer">
                     <p>Already have an account? <a href="{% url 'login' %}">Login</a></p> <!--direct to login page-->
                     <button type="submit">SIGN UP</button> <!--sign up button-->

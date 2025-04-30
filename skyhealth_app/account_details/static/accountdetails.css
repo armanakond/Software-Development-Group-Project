@@ -36,7 +36,7 @@
     display: flex; /*creates flex container and allows for child elements to be displayed flexibily*/
 }
 
-.accountdetailspage {
+.account-details-page {
     flex: 1; /*fills entire container in all directions by flexing (shrinking or growing to fit)*/
     background-color: #e6e6e6; /*sets backround colour */
     padding: 30px 50px; /*creates 30 pixel space inside, above and below in the container. creates 50 pixels left and right in element*/
@@ -92,7 +92,7 @@
     background-color: #fff; /*sets backround colour of input box to white*/
 }
 
-.submit {
+.update {
     padding: 20px; /*creates 20 pixel space in all directions within button*/
     border-radius: 10px; /*rounds corners of button*/
     font-size: 1.5rem; /*sets font size*/

@@ -39,15 +39,18 @@ def register_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        user = authenticate(request, email=email, password=password)
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        #authenticate
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
+            #log in and send to dashboard
             login(request, user)
-            return redirect('dashboard:home')   # or wherever your dashboard lives
+            return redirect('dashboard:home')
         else:
-            messages.error(request, "Invalid credentials")
-            return render(request, 'accounts/login.html')
+            messages.error(request, "Invalid username or password")
 
+    # if GET, or failed POST renders
     return render(request, 'accounts/login.html')

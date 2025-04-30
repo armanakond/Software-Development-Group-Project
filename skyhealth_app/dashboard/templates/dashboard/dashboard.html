@@ -5,16 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Sky Healthcheck Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'session.css' %}"> <!--refereneces static folder holding session.css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'session.css' %}">
+    <!--refereneces static folder holding session.css-->
 </head>
 
 <body>
     <div class="container">
         <div class="sidebar">
-            <img src="{% static 'images/skylogo.png' %}" alt="SkyHealth Logo" class="logo">  <!--retrieves logo from static folder-->
+            <img src="{% static 'images/skylogo.png' %}" alt="SkyHealth Logo" class="logo">
+            <!--retrieves logo from static folder-->
 
             <div class="sidebar-links">
-                <a href="{% url 'accountdetails' %}" class="sidebar-button">ACCOUNT DETAILS</a> <!--displays sidebar buttons and references different pages-->
+                <a href="{% url 'accountdetails' %}" class="sidebar-button">ACCOUNT DETAILS</a>
+                <!--displays sidebar buttons and references different pages-->
                 <a href="{% url 'register' %}" class="sidebar-button logout-button">LOG OUT</a>
             </div>
         </div>
@@ -22,7 +25,8 @@
         <div class="main">
             <div class="header">
                 <h1>Welcome back, <span>User</span></h1>
-                <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p> <!--displays current date time-->
+                <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
+                <!--displays current date time-->
             </div>
 
             <div class="form-container">

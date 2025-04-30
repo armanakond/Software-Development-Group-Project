@@ -175,7 +175,8 @@
         }
 
         .session-info {
-            margin: 9px 0; /*creates space inbetween each element*/
+            margin: 9px 0;
+            /*creates space inbetween each element*/
         }
     </style>
 </head>
@@ -199,171 +200,111 @@
             </div>
             <!-- Voting container starts -->
             <div class="container">
+                {# voting/templates/voting/voting.html #}
                 <form method="post" action="{% url 'voting' %}" id="healthForm">
                     {% csrf_token %}
-                    <div style="margin-bottom: 20px;">
-                        <div class="form-container">
-                            <div class="session-info">
-                                <select name="session_name" >
-                                    <option value="" disabled selected>SESSION NAME</option>
-                                    <!-- Inisde these options we can add the stuff from database -->
-                                </select>
-                            </div>
-    
-                            <div class="session-info">
-                                <select name="session_date" >
-                                    <option value="" disabled selected>SESSION DATE</option>
-    
-                                </select>
-                            </div>
-    
-    
-                            <select name="team_name" >
-                                <option value="" disabled selected>TEAM NAME</option>
-    
-                            </select>
-                        </div>
-                        <h3>Colour Key:</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 8px;">
-                                <span class="circle green"
-                                    style="display: inline-block; vertical-align: middle;"></span>
-                                <span style="margin-left: 10px;">No Improvements Needed</span>
-                            </li>
-                            <li style="margin-bottom: 8px;">
-                                <span class="circle amber"
-                                    style="display: inline-block; vertical-align: middle;"></span>
-                                <span style="margin-left: 10px;">Minor Improvements Needed</span>
-                            </li>
-                            <li>
-                                <span class="circle red" style="display: inline-block; vertical-align: middle;"></span>
-                                <span style="margin-left: 10px;">Major Improvements Needed</span>
-                            </li>
-                        </ul>
+
+                    <!-- session/team selectors -->
+                    <div class="form-row">
+                        <select name="session_name" >
+                            <option value="" disabled selected>SESSION NAME</option>
+                            <!-- {% for s in sessions %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %} -->
+                        </select>
+
+                        <select name="session_date" >
+                            <option value="" disabled selected>SESSION DATE</option>
+                            <!-- {% for s in sessions %}<option value="{{ s.date }}">{{ s.date }}</option>{% endfor %} -->
+                        </select>
+
+                        <select name="team_name" >
+                            <option value="" disabled selected>TEAM NAME</option>
+                            <!-- {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %} -->
+                        </select>
                     </div>
-                    <!-- Question 1 -->
-                    <h2>Delivering Value: Are we consistently delivering value with our customers?</h2>
+
+                    {% comment %} QUESTION 1 {% endcomment %}
+                    <h2>1. Delivering Value: Are we consistently delivering value with our customers?</h2>
                     <div class="vote-options">
-                        <label>
-                            <input type="radio" name="q1_vote" value="green">
-                            <div class="circle green"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q1_vote" value="amber">
-                            <div class="circle amber"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q1_vote" value="red">
-                            <div class="circle red"></div>
-                        </label>
+                        <label><input type="radio" name="q1_vote" value="green" ><span
+                                class="circle green"></span></label>
+                        <label><input type="radio" name="q1_vote" value="amber"><span
+                                class="circle amber"></span></label>
+                        <label><input type="radio" name="q1_vote" value="red"><span class="circle red"></span></label>
                     </div>
-                    <textarea name = "q1_feedback" placeholder="Add any feedback... (optional)"></textarea>
-                    <textarea name = "q1_team_actions" placeholder="Actions the team can take to improve (optional)"></textarea>
-                    <textarea name = "q1_org_solutions" placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    <textarea name="q1_feedback" placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea name="q1_team_actions" placeholder="Actions the team can take..."></textarea>
+                    <textarea name="q1_org_solutions" placeholder="Solutions the organisation can take..."></textarea>
 
-                    <!-- Question 2 -->
-                    <h2>Learning: Did you manage to learn new things to help you grow?</h2>
+                    {% comment %} QUESTION 2 {% endcomment %}
+                    <h2>2. Learning: Did you manage to learn new things to help you grow?</h2>
                     <div class="vote-options">
-                        <label>
-                            <input type="radio" name="q2_vote" value="green">
-                            <div class="circle green"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q2_vote" value="amber">
-                            <div class="circle amber"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q2_vote" value="red">
-                            <div class="circle red"></div>
-                        </label>
+                        <label><input type="radio" name="q2_vote" value="green" ><span
+                                class="circle green"></span></label>
+                        <label><input type="radio" name="q2_vote" value="amber"><span
+                                class="circle amber"></span></label>
+                        <label><input type="radio" name="q2_vote" value="red"><span class="circle red"></span></label>
                     </div>
-                    <textarea name = "q2_feedback"  placeholder="Add any feedback... (optional)"></textarea>
-                    <textarea name = "q2_team_actions" placeholder="Actions the team can take to improve (optional)"></textarea>
-                    <textarea name = "q2_org_solutions" placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    <textarea name="q2_feedback" placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea name="q2_team_actions" placeholder="Actions the team can take..."></textarea>
+                    <textarea name="q2_org_solutions" placeholder="Solutions the organisation can take..."></textarea>
 
-                    <h2>Speed: Was the speed of the work suitable for the way you work?</h2>
+                    {% comment %} QUESTION 3 {% endcomment %}
+                    <h2>3. Speed: Was the speed of the work suitable?</h2>
                     <div class="vote-options">
-                        <label>
-                            <input type="radio" name="q3_vote" value="green">
-                            <div class="circle green"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q3_vote" value="amber">
-                            <div class="circle amber"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q3_vote" value="red">
-                            <div class="circle red"></div>
-                        </label>
+                        <label><input type="radio" name="q3_vote" value="green" ><span
+                                class="circle green"></span></label>
+                        <label><input type="radio" name="q3_vote" value="amber"><span
+                                class="circle amber"></span></label>
+                        <label><input type="radio" name="q3_vote" value="red"><span class="circle red"></span></label>
                     </div>
+                    <textarea name="q3_feedback" placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea name="q3_team_actions" placeholder="Actions the team can take..."></textarea>
+                    <textarea name="q3_org_solutions" placeholder="Solutions the organisation can take..."></textarea>
 
-                    <textarea name = "q3_feedback" placeholder="Add any feedback... (optional)"></textarea>
-                    <textarea name = "q3_team_actions" placeholder="Actions the team can take to improve (optional)"></textarea>
-                    <textarea name = "q3_org_solutions" placeholder="Solutions the organisation can take to improve (optional)"></textarea>
-
-                    <h2>Easy to release: Is it easy to release and get on with the work?</h2>
+                    {% comment %} QUESTION 4 {% endcomment %}
+                    <h2>4. Easy to release: Is it easy to release and get on with the work?</h2>
                     <div class="vote-options">
-                        <label>
-                            <input type="radio" name="q4_vote" value="green">
-                            <div class="circle green"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q4_vote" value="amber">
-                            <div class="circle amber"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q4_vote" value="red">
-                            <div class="circle red"></div>
-                        </label>
+                        <label><input type="radio" name="q4_vote" value="green" ><span
+                                class="circle green"></span></label>
+                        <label><input type="radio" name="q4_vote" value="amber"><span
+                                class="circle amber"></span></label>
+                        <label><input type="radio" name="q4_vote" value="red"><span class="circle red"></span></label>
                     </div>
-                    <textarea name = "q4_feedback" placeholder="Add any feedback... (optional)"></textarea>
-                    <textarea name = "q4_team_actions" placeholder="Actions the team can take to improve (optional)"></textarea>
-                    <textarea name = "q4_org_solutions" placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    <textarea name="q4_feedback" placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea name="q4_team_actions" placeholder="Actions the team can take..."></textarea>
+                    <textarea name="q4_org_solutions" placeholder="Solutions the organisation can take..."></textarea>
 
-                    <h2>Fun: How much fun did you have working in this team during this session?</h2>
+                    {% comment %} QUESTION 5 {% endcomment %}
+                    <h2>5. Fun: How much fun did you have working in this team this session?</h2>
                     <div class="vote-options">
-                        <label>
-                            <input type="radio" name="q5_vote" value="green">
-                            <div class="circle green"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q5_vote" value="amber">
-                            <div class="circle amber"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q5_vote" value="red">
-                            <div class="circle red"></div>
-                        </label>
+                        <label><input type="radio" name="q5_vote" value="green" ><span
+                                class="circle green"></span></label>
+                        <label><input type="radio" name="q5_vote" value="amber"><span
+                                class="circle amber"></span></label>
+                        <label><input type="radio" name="q5_vote" value="red"><span class="circle red"></span></label>
                     </div>
-                    <textarea name = "q5_feedback" placeholder="Add any feedback... (optional)"></textarea>
-                    <textarea name = "q5_team_actions" placeholder="Actions the team can take to improve (optional)"></textarea>
-                    <textarea name = "q5_org_solutions" placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    <textarea name="q5_feedback" placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea name="q5_team_actions" placeholder="Actions the team can take..."></textarea>
+                    <textarea name="q5_org_solutions" placeholder="Solutions the organisation can take..."></textarea>
 
-                    <h2>Equipment: Have the equipment provided been satisfactory for you?</h2>
+                    {% comment %} QUESTION 6 {% endcomment %}
+                    <h2>6. Equipment: Have the equipment provided been satisfactory?</h2>
                     <div class="vote-options">
-                        <label>
-                            <input type="radio" name="q6_vote" value="green">
-                            <div class="circle green"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q6_vote" value="amber">
-                            <div class="circle amber"></div>
-                        </label>
-                        <label>
-                            <input type="radio" name="q6_vote" value="red">
-                            <div class="circle red"></div>
-                        </label>
+                        <label><input type="radio" name="q6_vote" value="green" ><span
+                                class="circle green"></span></label>
+                        <label><input type="radio" name="q6_vote" value="amber"><span
+                                class="circle amber"></span></label>
+                        <label><input type="radio" name="q6_vote" value="red"><span class="circle red"></span></label>
                     </div>
-                    <textarea name = "q6_feedback" placeholder="Add any feedback... (optional)"></textarea>
-                    <textarea name = "q6_team_actions" placeholder="Actions the team can take to improve (optional)"></textarea>
-                    <textarea name = "q6_org_solutions" placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    <textarea name="q6_feedback" placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea name="q6_team_actions" placeholder="Actions the team can take..."></textarea>
+                    <textarea name="q6_org_solutions" placeholder="Solutions the organisation can take..."></textarea>
 
-                    <!-- Submit Button -->
-                    <div style="text-align: center; margin-top: 30px;">
+                    <div style="text-align:center; margin-top:1.5rem;">
                         <button type="submit">Submit</button>
                     </div>
-
                 </form>
+
             </div>
 
             <script>

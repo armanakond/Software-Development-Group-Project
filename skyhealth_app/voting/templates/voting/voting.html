@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Health Check Flow</title>
     <!-- Styling for the page -->
+    {% load static %} <!-- loads static to retrieve image and css file-->
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +14,7 @@
             margin: 0;
             padding: 20px;
         }
+
         .container {
             background: white;
             border-radius: 10px;
@@ -163,11 +166,16 @@
             flex-grow: 1;
             padding: 30px;
         }
+
         .form-container {
-        margin-top: 100px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .session-info {
+            margin: 9px 0; /*creates space inbetween each element*/
         }
     </style>
 </head>
@@ -177,7 +185,7 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Main content area -->
-            <img src="skyhealth_app/voting/templates/skylogo.png" alt="SkyHealth Logo" class="logo">
+            <img src="{% static 'images/skylogo.png' %}" alt="SkyHealth Logo" class="logo">
             <div class="sidebar-links">
                 <a href="{% url 'dashboard' %}" class="sidebar-button">DASHBOARD</a>
                 <a href="{% url 'register' %}" class="sidebar-button logout-button">LOG OUT</a>
@@ -189,196 +197,203 @@
                 <h1>Sky Health Voting Page</h1>
                 <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
             </div>
-<!-- Voting container starts -->
-<div class="container">
-    <form id="healthForm">
-        <div class="form-container">
-        <select name="session_name" required>
-            <option value="" disabled selected>SESSION NAME</option>
-            <!-- Inisde these options we can add the stuff from database -->
-        </select>
+            <!-- Voting container starts -->
+            <div class="container">
+                <form id="healthForm">
+                    <div class="form-container">
+                        <div class="session-info">
+                            <select name="session_name" required>
+                                <option value="" disabled selected>SESSION NAME</option>
+                                <!-- Inisde these options we can add the stuff from database -->
+                            </select>
+                        </div>
 
-        <select name="session_date" required>
-            <option value="" disabled selected>SESSION DATE</option>
+                        <div class="session-info">
+                            <select name="session_date" required>
+                                <option value="" disabled selected>SESSION DATE</option>
 
-        </select>
+                            </select>
+                        </div>
 
-        <select name="team_name" required>
-            <option value="" disabled selected>TEAM NAME</option>
-            
-        </select>
-    </div>
-        <div style="margin-bottom: 20px;">
-            <h3>Colour Key:</h3>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 8px;">
-                    <span class="circle green" style="display: inline-block; vertical-align: middle;"></span>
-                    <span style="margin-left: 10px;">No Improvements Needed</span>
-                </li>
-                <li style="margin-bottom: 8px;">
-                    <span class="circle amber" style="display: inline-block; vertical-align: middle;"></span>
-                    <span style="margin-left: 10px;">Minor Improvements Needed</span>
-                </li>
-                <li>
-                    <span class="circle red" style="display: inline-block; vertical-align: middle;"></span>
-                    <span style="margin-left: 10px;">Major Improvements Needed</span>
-                </li>
-            </ul>
-        </div>
-        <!-- Question 1 -->
-        <h2>Delivering Value: Are we consistently delivering value with our customers?</h2>
-        <div class="vote-options">
-            <label>
-                <input type="radio" name="q1_vote" value="No Improvements needed">
-                <div class="circle green"></div>
-            </label>
-            <label>
-                <input type="radio" name="q1_vote" value="Minor Improvements needed">
-                <div class="circle amber"></div>
-            </label>
-            <label>
-                <input type="radio" name="q1_vote" value="Major improvements needed">
-                <div class="circle red"></div>
-            </label>
-        </div>        
-        <textarea placeholder="Add any feedback... (optional)"></textarea>
-        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                        
+                        <select name="team_name" required>
+                            <option value="" disabled selected>TEAM NAME</option>
 
-        <!-- Question 2 -->
-        <h2>Learning: Did you manage to learn new things to help you grow?</h2>
-        <div class="vote-options">
-            <label>
-                <input type="radio" name="q2_vote" value="No Improvements needed">
-                <div class="circle green"></div>
-            </label>
-            <label>
-                <input type="radio" name="q2_vote" value="Minor Improvements needed">
-                <div class="circle amber"></div>
-            </label>
-            <label>
-                <input type="radio" name="q2_vote" value="Major improvements needed">
-                <div class="circle red"></div>
-            </label>
-        </div>        
-        <textarea placeholder="Add any feedback... (optional)"></textarea>
-        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h3>Colour Key:</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 8px;">
+                                <span class="circle green"
+                                    style="display: inline-block; vertical-align: middle;"></span>
+                                <span style="margin-left: 10px;">No Improvements Needed</span>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <span class="circle amber"
+                                    style="display: inline-block; vertical-align: middle;"></span>
+                                <span style="margin-left: 10px;">Minor Improvements Needed</span>
+                            </li>
+                            <li>
+                                <span class="circle red" style="display: inline-block; vertical-align: middle;"></span>
+                                <span style="margin-left: 10px;">Major Improvements Needed</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Question 1 -->
+                    <h2>Delivering Value: Are we consistently delivering value with our customers?</h2>
+                    <div class="vote-options">
+                        <label>
+                            <input type="radio" name="q1_vote" value="No Improvements needed">
+                            <div class="circle green"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q1_vote" value="Minor Improvements needed">
+                            <div class="circle amber"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q1_vote" value="Major improvements needed">
+                            <div class="circle red"></div>
+                        </label>
+                    </div>
+                    <textarea placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                    <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
 
-        <h2>Speed: Was the speed of the work suitable for the way you work?</h2>
-        <div class="vote-options">
-            <label>
-                <input type="radio" name="q3_vote" value="No Improvements needed">
-                <div class="circle green"></div>
-            </label>
-            <label>
-                <input type="radio" name="q3_vote" value="Minor Improvements needed">
-                <div class="circle amber"></div>
-            </label>
-            <label>
-                <input type="radio" name="q3_vote" value="Major improvements needed">
-                <div class="circle red"></div>
-            </label>
-        </div>
-        
-        <textarea placeholder="Add any feedback... (optional)"></textarea>
-        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    <!-- Question 2 -->
+                    <h2>Learning: Did you manage to learn new things to help you grow?</h2>
+                    <div class="vote-options">
+                        <label>
+                            <input type="radio" name="q2_vote" value="No Improvements needed">
+                            <div class="circle green"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q2_vote" value="Minor Improvements needed">
+                            <div class="circle amber"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q2_vote" value="Major improvements needed">
+                            <div class="circle red"></div>
+                        </label>
+                    </div>
+                    <textarea placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                    <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
 
-        <h2>Easy to release: Is it easy to release and get on with the work?</h2>
-        <div class="vote-options">
-            <label>
-                <input type="radio" name="q4_vote" value="No Improvements needed">
-                <div class="circle green"></div>
-            </label>
-            <label>
-                <input type="radio" name="q4_vote" value="Minor Improvements needed">
-                <div class="circle amber"></div>
-            </label>
-            <label>
-                <input type="radio" name="q4_vote" value="Major improvements needed">
-                <div class="circle red"></div>
-            </label>
-        </div>        
-        <textarea placeholder="Add any feedback... (optional)"></textarea>
-        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    <h2>Speed: Was the speed of the work suitable for the way you work?</h2>
+                    <div class="vote-options">
+                        <label>
+                            <input type="radio" name="q3_vote" value="No Improvements needed">
+                            <div class="circle green"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q3_vote" value="Minor Improvements needed">
+                            <div class="circle amber"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q3_vote" value="Major improvements needed">
+                            <div class="circle red"></div>
+                        </label>
+                    </div>
 
-        <h2>Fun: How much fun did you have working in this team during this session?</h2>
-        <div class="vote-options">
-            <label>
-                <input type="radio" name="q5_vote" value="No Improvements needed">
-                <div class="circle green"></div>
-            </label>
-            <label>
-                <input type="radio" name="q5_vote" value="Minor Improvements needed">
-                <div class="circle amber"></div>
-            </label>
-            <label>
-                <input type="radio" name="q5_vote" value="Major improvements needed">
-                <div class="circle red"></div>
-            </label>
-        </div>        
-        <textarea placeholder="Add any feedback... (optional)"></textarea>
-        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    <textarea placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                    <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
 
-        <h2>Equipment: Have the equipment provided been satisfactory for you?</h2>
-        <div class="vote-options">
-            <label>
-                <input type="radio" name="q6_vote" value="No Improvements needed">
-                <div class="circle green"></div>
-            </label>
-            <label>
-                <input type="radio" name="q6_vote" value="Minor Improvements needed">
-                <div class="circle amber"></div>
-            </label>
-            <label>
-                <input type="radio" name="q6_vote" value="Major improvements needed">
-                <div class="circle red"></div>
-            </label>
-        </div>        
-        <textarea placeholder="Add any feedback... (optional)"></textarea>
-        <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
-        <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
+                    <h2>Easy to release: Is it easy to release and get on with the work?</h2>
+                    <div class="vote-options">
+                        <label>
+                            <input type="radio" name="q4_vote" value="No Improvements needed">
+                            <div class="circle green"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q4_vote" value="Minor Improvements needed">
+                            <div class="circle amber"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q4_vote" value="Major improvements needed">
+                            <div class="circle red"></div>
+                        </label>
+                    </div>
+                    <textarea placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                    <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
 
-        <!-- Submit Button -->
-        <div style="text-align: center; margin-top: 30px;">
-            <button type="submit">Submit</button>
-        </div>
-        
-    </form>
-</div>
+                    <h2>Fun: How much fun did you have working in this team during this session?</h2>
+                    <div class="vote-options">
+                        <label>
+                            <input type="radio" name="q5_vote" value="No Improvements needed">
+                            <div class="circle green"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q5_vote" value="Minor Improvements needed">
+                            <div class="circle amber"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q5_vote" value="Major improvements needed">
+                            <div class="circle red"></div>
+                        </label>
+                    </div>
+                    <textarea placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                    <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
 
-<script>
-    // Visual circle highlighting
-    document.querySelectorAll('.vote-options').forEach(group => {
-        const radios = group.querySelectorAll('input[type="radio"]');
-        const circles = group.querySelectorAll('.circle');
+                    <h2>Equipment: Have the equipment provided been satisfactory for you?</h2>
+                    <div class="vote-options">
+                        <label>
+                            <input type="radio" name="q6_vote" value="No Improvements needed">
+                            <div class="circle green"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q6_vote" value="Minor Improvements needed">
+                            <div class="circle amber"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="q6_vote" value="Major improvements needed">
+                            <div class="circle red"></div>
+                        </label>
+                    </div>
+                    <textarea placeholder="Add any feedback... (optional)"></textarea>
+                    <textarea placeholder="Actions the team can take to improve (optional)"></textarea>
+                    <textarea placeholder="Solutions the organisation can take to improve (optional)"></textarea>
 
-        radios.forEach((radio, idx) => {
-            radio.addEventListener('change', () => {
-                circles.forEach(c => c.classList.remove('selected'));
-                circles[idx].classList.add('selected');
-            });
-        });
-    });
+                    <!-- Submit Button -->
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="submit">Submit</button>
+                    </div>
 
-    // Form submission handler with value logging
-    document.getElementById('healthForm').addEventListener('submit', function (e) {
-        e.preventDefault();
+                </form>
+            </div>
 
-        const formData = new FormData(this);
-        for (let [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-        }
+            <script>
+                // Visual circle highlighting
+                document.querySelectorAll('.vote-options').forEach(group => {
+                    const radios = group.querySelectorAll('input[type="radio"]');
+                    const circles = group.querySelectorAll('.circle');
 
-        alert("Form submitted! (See console for values)");
-        this.reset();
-        document.querySelectorAll('.circle').forEach(c => c.classList.remove('selected'));
-    });
-</script>
+                    radios.forEach((radio, idx) => {
+                        radio.addEventListener('change', () => {
+                            circles.forEach(c => c.classList.remove('selected'));
+                            circles[idx].classList.add('selected');
+                        });
+                    });
+                });
+
+                // Form submission handler with value logging
+                document.getElementById('healthForm').addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    const formData = new FormData(this);
+                    for (let [key, value] of formData.entries()) {
+                        console.log(`${key}: ${value}`);
+                    }
+
+                    alert("Form submitted! (See console for values)");
+                    this.reset();
+                    document.querySelectorAll('.circle').forEach(c => c.classList.remove('selected'));
+                });
+            </script>
 
 </body>
-</html>
 
+</html>

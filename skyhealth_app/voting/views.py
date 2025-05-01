@@ -2,11 +2,13 @@
 #Co Author - Md Hoque
 #Co Author - Sikandar Ali
 
+#All required imports for methods and code to run in views.py
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import HealthVote
 from .models import Session, Team
 
+#Login required makes it to where the individual can't access url without being logged in
 @login_required
 def session_view(request):
     votes = HealthVote.objects.filter(user=request.user)
@@ -18,8 +20,9 @@ def session_view(request):
 
 
 #All the inputs in views.py for healthvote
-@login_required
-def voting_view(request):
+@login_required #Login required makes it to where the individual can't access url without being logged in
+def voting_view(request): #Function defined for voting view
+    #If statement checking if POST has been ran for the form
     if request.method == "POST":
         HealthVote.objects.create(
             user=request.user,
@@ -57,6 +60,8 @@ def voting_view(request):
             q6_team_actions=request.POST.get('q6_team_actions'),
             q6_org_solutions=request.POST.get('q6_org_solutions')
         )
+        
+        #Redirects to dashboard after form is submitted
         return redirect('dashboard')
 
 
@@ -64,9 +69,9 @@ def voting_view(request):
     sessions = Session.objects.all()
     teams    = Team.objects.all()
 
-    session_names = [s.name for s in sessions]
-    session_dates = [s.date.isoformat() for s in sessions]
-    team_names    = [t.name for t in teams]
+    session_names = [s.name for s in sessions] #Used for dynamically creating session names from admin dashboard
+    session_dates = [s.date.isoformat() for s in sessions] #Used for dynamically creating session names from admin dashboard
+    team_names    = [t.name for t in teams] #Used for dynamically creating team names from admin dashboard
 
     return render(request, 'voting/voting.html', {
         'session_names': session_names,

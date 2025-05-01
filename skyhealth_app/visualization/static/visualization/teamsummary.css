@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.th,
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.color-cell {
+    color: white;
+    font-weight: bold;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.datetime {
+    font-size: 14px;
+    color: #666;
+}

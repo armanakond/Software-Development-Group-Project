@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +7,7 @@
     <title>Sky Healthcheck</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'session.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -25,16 +27,26 @@
                 <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
             </div>
 
-            <div class="form-container">
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="categories-grid">
-                    </div> <!--will add categories here-->
+            <div class="content">
+                <h2>Vote Summary</h2>
+                <ul>
+                    <li><strong>Red Votes:</strong> {{ vote_counts.red_count }}</li>
+                    <li><strong>Amber Votes:</strong> {{ vote_counts.amber_count }}</li>
+                    <li><strong>Green Votes:</strong> {{ vote_counts.green_count }}</li>
+                </ul>
+                <canvas id="voteChart" data-red="{{ vote_counts.red_count|default:'0' }}"
+                    data-amber="{{ vote_counts.amber_count|default:'0' }}"
+                    data-green="{{ vote_counts.green_count|default:'0' }}" width="400" height="200">
+                </canvas>
 
-                </form>
+
             </div>
         </div>
     </div>
+
+
+
+    <script src="{% static 'chart.js' %}"></script>
 </body>
 
 </html>

@@ -1,0 +1,61 @@
+change_vote.html:
+{% load static %}
+
+{% block content %}
+<h1>Update Your Vote</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <h2>1. Delivering Value</h2>
+    <label><input type="radio" name="q1_vote" value="green" {% if vote.q1_vote == "green" %}checked{% endif %}> Green</label>
+    <label><input type="radio" name="q1_vote" value="amber" {% if vote.q1_vote == "amber" %}checked{% endif %}> Amber</label>
+    <label><input type="radio" name="q1_vote" value="red" {% if vote.q1_vote == "red" %}checked{% endif %}> Red</label>
+    <textarea name="q1_feedback">{{ vote.q1_feedback }}</textarea>
+    <textarea name="q1_team_actions">{{ vote.q1_team_actions }}</textarea>
+    <textarea name="q1_org_solutions">{{ vote.q1_org_solutions }}</textarea>
+
+    <h2>2. Learning</h2>
+    <label><input type="radio" name="q2_vote" value="green" {% if vote.q2_vote == "green" %}checked{% endif %}> Green</label>
+    <label><input type="radio" name="q2_vote" value="amber" {% if vote.q2_vote == "amber" %}checked{% endif %}> Amber</label>
+    <label><input type="radio" name="q2_vote" value="red" {% if vote.q2_vote == "red" %}checked{% endif %}> Red</label>
+    <textarea name="q2_feedback">{{ vote.q2_feedback }}</textarea>
+    <textarea name="q2_team_actions">{{ vote.q2_team_actions }}</textarea>
+    <textarea name="q2_org_solutions">{{ vote.q2_org_solutions }}</textarea>
+
+    <h2>3. Speed</h2>
+    <label><input type="radio" name="q3_vote" value="green" {% if vote.q3_vote == "green" %}checked{% endif %}> Green</label>
+    <label><input type="radio" name="q3_vote" value="amber" {% if vote.q3_vote == "amber" %}checked{% endif %}> Amber</label>
+    <label><input type="radio" name="q3_vote" value="red" {% if vote.q3_vote == "red" %}checked{% endif %}> Red</label>
+    <textarea name="q3_feedback">{{ vote.q3_feedback }}</textarea>
+    <textarea name="q3_team_actions">{{ vote.q3_team_actions }}</textarea>
+    <textarea name="q3_org_solutions">{{ vote.q3_org_solutions }}</textarea>
+
+    <h2>4. Easy to release</h2>
+    <label><input type="radio" name="q4_vote" value="green" {% if vote.q4_vote == "green" %}checked{% endif %}> Green</label>
+    <label><input type="radio" name="q4_vote" value="amber" {% if vote.q4_vote == "amber" %}checked{% endif %}> Amber</label>
+    <label><input type="radio" name="q4_vote" value="red" {% if vote.q4_vote == "red" %}checked{% endif %}> Red</label>
+    <textarea name="q4_feedback">{{ vote.q4_feedback }}</textarea>
+    <textarea name="q4_team_actions">{{ vote.q4_team_actions }}</textarea>
+    <textarea name="q4_org_solutions">{{ vote.q4_org_solutions }}</textarea>
+
+    <h2>5. Fun</h2>
+    <label><input type="radio" name="q5_vote" value="green" {% if vote.q5_vote == "green" %}checked{% endif %}> Green</label>
+    <label><input type="radio" name="q5_vote" value="amber" {% if vote.q5_vote == "amber" %}checked{% endif %}> Amber</label>
+    <label><input type="radio" name="q5_vote" value="red" {% if vote.q5_vote == "red" %}checked{% endif %}> Red</label>
+    <textarea name="q5_feedback">{{ vote.q5_feedback }}</textarea>
+    <textarea name="q5_team_actions">{{ vote.q5_team_actions }}</textarea>
+    <textarea name="q5_org_solutions">{{ vote.q5_org_solutions }}</textarea>
+
+    <h2>6. Equipment</h2>
+    <label><input type="radio" name="q6_vote" value="green" {% if vote.q6_vote == "green" %}checked{% endif %}> Green</label>
+    <label><input type="radio" name="q6_vote" value="amber" {% if vote.q6_vote == "amber" %}checked{% endif %}> Amber</label>
+    <label><input type="radio" name="q6_vote" value="red" {% if vote.q6_vote == "red" %}checked{% endif %}> Red</label>
+    <textarea name="q6_feedback">{{ vote.q6_feedback }}</textarea>
+    <textarea name="q6_team_actions">{{ vote.q6_team_actions }}</textarea>
+    <textarea name="q6_org_solutions">{{ vote.q6_org_solutions }}</textarea>
+
+    <br>
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}

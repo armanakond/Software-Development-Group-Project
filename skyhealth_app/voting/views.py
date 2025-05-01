@@ -75,11 +75,13 @@ def voting_view(request):
     })
 
 
+#Login required makes it to where the individual can't access url without being logged in
 @login_required
-def change_vote_view(request, pk):
-    vote = get_object_or_404(HealthVote, pk=pk, user=request.user)
+def change_vote_view(request, pk): #Function created for changing voting
+    vote = get_object_or_404(HealthVote, pk=pk, user=request.user) #Gets details and stores into vote
 
-    if request.method == "POST":
+    #If statement checking if POST has been ran for the form
+    if request.method == "POST": 
         vote.q1_vote = request.POST.get('q1_vote', vote.q1_vote)
         vote.q1_feedback = request.POST.get('q1_feedback', vote.q1_feedback)
         vote.q1_team_actions = request.POST.get('q1_team_actions', vote.q1_team_actions)
@@ -110,8 +112,11 @@ def change_vote_view(request, pk):
         vote.q6_team_actions = request.POST.get('q6_team_actions', vote.q6_team_actions)
         vote.q6_org_solutions = request.POST.get('q6_org_solutions', vote.q6_org_solutions)
 
+        #Saves vote data onto the SQLite database
         vote.save()
-        return redirect('dashboard')  # or wherever you want them to go after
+        #Redirects to dashboard after form is submitted
+        return redirect('dashboard')
 
+    #Keeps user on change vote if nothing is done
     return render(request, 'voting/change_vote.html', {'vote': vote})
 

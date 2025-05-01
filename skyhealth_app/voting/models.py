@@ -14,6 +14,7 @@ class HealthVote(models.Model):
     session_date = models.CharField(max_length=100)
     team_name = models.CharField(max_length=100)
 
+    #Blank and nulls help with both allowing empty aspects in the form and the databases.
     q1_vote = models.CharField(max_length=10, blank=True, null=True)
     q1_feedback = models.TextField(blank=True)
     q1_team_actions = models.TextField(blank=True)
@@ -49,6 +50,7 @@ class HealthVote(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.session_name} - {self.session_date}"
     
+#Further code for sessions for the database and forms    
 class Session(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField()
@@ -59,7 +61,7 @@ class Session(models.Model):
     def __str__(self):
         return f"{self.name} ({self.date})"
 
-
+#Further code for teams for the database and forms
 class Team(models.Model):
     name = models.CharField(max_length=100)
 

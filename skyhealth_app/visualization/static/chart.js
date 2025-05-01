@@ -1,15 +1,20 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('voteChart');
-    if (!ctx) return; // Skip if canvas doesn't exist
+//Author: Arman
 
+document.addEventListener('DOMContentLoaded', function () { //this waits till DOM is loaded 
+    const ctx = document.getElementById('voteChart');  //the canvas element w ID voteChart
+    if (!ctx) return;
+
+
+    //parseInt used to convert data into integer, so it will be 0 if this is not defined
     const redCount = parseInt(ctx.dataset.red) || 0;
     const amberCount = parseInt(ctx.dataset.amber) || 0;
     const greenCount = parseInt(ctx.dataset.green) || 0;
 
-    new Chart(ctx.getContext('2d'), {
+
+    new Chart(ctx.getContext('2d'), { //create chart 
         type: 'bar',
         data: {
-            labels: ['Red', 'Amber', 'Green'],
+            labels: ['Red', 'Amber', 'Green'], //the label which is x axis
             datasets: [{
                 label: 'Vote Count',
                 data: [redCount, amberCount, greenCount],
@@ -22,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             responsive: true,
             scales: {
                 y: {
-                    beginAtZero: true,
+                    beginAtZero: true, //the numbers which is at y axis.
                     title: {
                         display: true,
                         text: 'Number of Votes'
@@ -32,3 +37,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+//https://www.w3schools.com/ai/ai_chartjs.asp

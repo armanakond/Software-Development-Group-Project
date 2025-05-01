@@ -179,6 +179,21 @@
             margin: 9px 0;
             /*creates space inbetween each element*/
         }
+
+        .form-row {
+            display: flex; /*displays elements flexibly*/
+            align-items: center; /*aligns elemnts to center*/
+            flex-direction: column; /*arranges elements is a column*/
+            gap: 22px; /*creates gap between elements */
+        }
+
+        select {
+            font-size: 18px; /*sets font size to 18 pixels*/
+            height: 50px; /*sets height of dropdown boxes*/
+            border-radius: 5px; /*rounds corners of dropdowns*/
+            border: 2px solid #b9b9b9; /*sets border thickness around the dropdown button*/
+            width: 100%; /*sets width to 100% of its containers size*/
+        }
     </style>
 </head>
 
@@ -195,14 +210,14 @@
             </div>
         </div>
         <div class="main-content">
-                {# voting/templates/voting/voting.html #}
-                <form method="post" action="{% url 'voting' %}" id="healthForm">
-                    {% csrf_token %}
-                    <div class="header">
-                        <h1>Sky Health Voting Page</h1>
-                        <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
-                    </div>
-                    <div class="container">
+            {# voting/templates/voting/voting.html #}
+            <form method="post" action="{% url 'voting' %}" id="healthForm">
+                {% csrf_token %}
+                <div class="header">
+                    <h1>Sky Health Voting Page</h1>
+                    <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
+                </div>
+                <div class="container">
 
                     <div class="form-row">
                         <select name="session_name" required>
@@ -230,11 +245,13 @@
                         <h3>Colour Key:</h3>
                         <ul style="list-style: none; padding: 0;">
                             <li style="margin-bottom: 8px;">
-                                <span class="circle green" style="display: inline-block; vertical-align: middle;"></span>
+                                <span class="circle green"
+                                    style="display: inline-block; vertical-align: middle;"></span>
                                 <span style="margin-left: 10px;">No Improvements Needed</span>
                             </li>
                             <li style="margin-bottom: 8px;">
-                                <span class="circle amber" style="display: inline-block; vertical-align: middle;"></span>
+                                <span class="circle amber"
+                                    style="display: inline-block; vertical-align: middle;"></span>
                                 <span style="margin-left: 10px;">Minor Improvements Needed</span>
                             </li>
                             <li>
@@ -330,25 +347,25 @@
                     <div style="text-align:center; margin-top:1.5rem;">
                         <button type="submit">Submit</button>
                     </div>
-                </form>
+            </form>
 
-            </div>
+        </div>
 
-            <script>
-                // Visual circle highlighting
-                document.querySelectorAll('.vote-options').forEach(group => {
-                    const radios = group.querySelectorAll('input[type="radio"]');
-                    const circles = group.querySelectorAll('.circle');
+        <script>
+            // Visual circle highlighting
+            document.querySelectorAll('.vote-options').forEach(group => {
+                const radios = group.querySelectorAll('input[type="radio"]');
+                const circles = group.querySelectorAll('.circle');
 
-                    radios.forEach((radio, idx) => {
-                        radio.addEventListener('change', () => {
-                            circles.forEach(c => c.classList.remove('selected'));
-                            circles[idx].classList.add('selected');
-                        });
+                radios.forEach((radio, idx) => {
+                    radio.addEventListener('change', () => {
+                        circles.forEach(c => c.classList.remove('selected'));
+                        circles[idx].classList.add('selected');
                     });
                 });
+            });
 
-            </script>
+        </script>
 
 </body>
 

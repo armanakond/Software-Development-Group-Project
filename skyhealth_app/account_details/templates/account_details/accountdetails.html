@@ -16,7 +16,7 @@
     <div class="container"> <!--container for entire pages elements-->
         <div class="navbar"> <!--names the class navbar to contain the navbar elements-->
             <img src="{% static 'images/skylogo.png' %}" alt="SkyHealth Logo" class="logo">
-            <!--image loaded from static and given alt text if image does not load-->
+            <!--image loaded from static, if it doesnt it loads the alternative-->
 
             <div class="navbar-urls-button-container">
                 <a href="{% url 'dashboard' %}" class="navbar-buttons">Dashboard</a> <!--references dashboard url-->
@@ -30,41 +30,40 @@
         <div class="account-details-page">
             <div class="page-header">
                 <h1 class="page-title">Account Details</h1> <!--displays pages title-->
-                <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p> <!--displays current date and time-->
+                <p class="datetime">{% now "D d M Y" %} &nbsp;&nbsp; {% now "H:i" %}</p>
             </div>
 
-            <div class="forms-layout"> <!--creates container for forms layout and uses class to later be edited by css-->
-                <div class="title">
-                    <h2>Personal Details</h2> <!--creates a header 2 and displays under account details-->
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- First Name -->
+                <div class="form-box">
+                    <label for="first_name">First name</label>
+                    <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}" required>
                 </div>
 
-                <div class="form-boxes"> <!--creates a nested container where all input fields will be-->
-    
-                    <div class="form-box"> <!--displays label-->
-                        <label>Name</label>
-                        <input type="text" id="name"> <!--creates input text box-->
-                    </div>
-                        
-                    <div class="form-box"> <!--using same class form-box for all buttons to edit all boxes using same css-->
-                        <label>Username</label>
-                        <input type="text" id="username">
-                    </div>
-
-                    <div class="form-box">
-                        <label>Email</label>
-                        <input type="email" id="email"> <!--creates email input box allowing for email format text to be enetered-->
-                    </div>
-
-                    <div class="form-box">
-                        <label>Password</label>
-                        <input type="text" id="password"><!--displays users password back to them in plaintext-->
-                    </div>
-
-                    <button class="update">Update</button>
-
+                <!-- user -->
+                <div class="form-box">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" value="{{ user.username }}" required>
                 </div>
-            </div>
+
+                <!-- email -->
+                <div class="form-box">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="{{ user.email }}" required>
+                </div>
+
+                <!-- pw -->
+                <div class="form-box">
+                    <label for="password">New password</label>
+                    <input type="password" id="password" name="password" placeholder="Leave blank to keep current">
+                </div>
+
+                <button type="submit" class="update">Update</button>
+            </form>
         </div>
+    </div>
 </body>
 
 </html>

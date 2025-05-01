@@ -1,3 +1,7 @@
+#Author - Junayed Ahmed
+#Co Author - Sikandar Ali
+#Co Author - Arman Akond
+
 from django.db import models
 from django.contrib.auth.models import User
 

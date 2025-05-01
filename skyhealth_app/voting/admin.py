@@ -1,3 +1,7 @@
+#Author - Junayed Ahmed
+#Co Author - Sikindar Ali
+#Co Author - 
+
 from django.contrib import admin
 from .models import HealthVote
 from .models import Session, Team

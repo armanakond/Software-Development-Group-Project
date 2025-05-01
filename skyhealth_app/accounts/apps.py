@@ -1,3 +1,7 @@
+# Author -  MD - Required for creating the box on the django admin dashboard
+# Co-Author -
+# Co-Author -
+
 from django.apps import AppConfig
 
 

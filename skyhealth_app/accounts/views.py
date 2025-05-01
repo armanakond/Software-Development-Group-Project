@@ -1,3 +1,7 @@
+# Author - MD - Allowed registration values to be stored to the DB, fixed redirection to dashboard after registration is complete, implemented and fixed login redirection to dashboard
+# Co-Author -
+# Co-Author -
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -10,18 +14,18 @@ def home(request):
 
 def register_view(request):
     if request.method == 'POST':
-        # 1) pull the form values
+        # form values which are pulled from the html
         first_name = request.POST['first_name']
         username   = request.POST['username']
         email      = request.POST['email']
         password   = request.POST['password']
 
-        # 2) simple duplicate-check
+        # checks if the username already exists
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username already taken")
             return render(request, 'accounts/registration.html')
 
-        # 3) create & save
+        # create and save username, email, password to the db.sqlite3 in our project
         user = User.objects.create_user(
             username=username,
             email=email,
@@ -30,7 +34,7 @@ def register_view(request):
         user.first_name = first_name
         user.save()
 
-        # 4) redirect to login
+        # after registering it redirects to the login page
         return redirect('login')
 
     # GET just shows the blank form
@@ -52,5 +56,5 @@ def login_view(request):
         else:
             messages.error(request, "Invalid username or password")
 
-    # if GET, or failed POST renders
+    # if get or post fails it renders this html
     return render(request, 'accounts/login.html')

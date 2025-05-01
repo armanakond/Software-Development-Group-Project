@@ -2,6 +2,13 @@ from django.db import models
 from django.contrib.auth.models import Permission
 
 # Create your models here.
+# Author - Md - Created the extra django admin box for "Accounts" + employee entries, 
+# Co-Author -
+# Co-Author -
+
+
+
+
 class AccountEntry(models.Model):
     name = models.CharField(
         max_length=150,

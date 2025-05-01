@@ -12,7 +12,7 @@ def accountdetails_view(request):
 
     if request.method == 'POST':
         # fields for updating 
-        user.first_name = request.POST.get('first_name', '').strip()
+        user.first_name = request.POST.get('first_name', '').strip() # strip helps to remove and trails and unnecessary whitespace
         user.username   = request.POST.get('username', '').strip()
         user.email      = request.POST.get('email', '').strip()
 
@@ -23,10 +23,10 @@ def accountdetails_view(request):
 
         # redirects to the same page, which is the same as refreshing it
         user.save()
-        return redirect('accountdetails')  # use your URL name here
+        return redirect('accountdetails')
 
     # simple site render
     return render(request, 
                   'account_details/accountdetails.html', 
-                  { 'user': user })
+                  { 'user': user }) # allows the html to access the user object and display its attributes which are the email and user info
 

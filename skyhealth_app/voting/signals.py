@@ -1,6 +1,4 @@
-#Author - Junayed Ahmed
-#Co Author - 
-#Co Author - 
+#Author - Md Hoque
 
 
 from django.db.models.signals import post_delete

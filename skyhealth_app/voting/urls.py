@@ -1,6 +1,6 @@
-#Author - Junayed Ahmed
-#Co Author - 
-#Co Author - 
+#Author - Arman Akond
+#Co Author - Junayed Ahmed
+#Co Author - Sikandar Ali
 
 
 from django.urls import path

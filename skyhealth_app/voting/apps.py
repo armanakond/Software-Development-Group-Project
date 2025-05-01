@@ -1,6 +1,6 @@
-#Author - Junayed Ahmed
-#Co Author - 
-#Co Author - 
+#Author - Md Hoque
+#Co Author - Junayed Ahmed
+#Co Author - Sikandar Ali
 
 from django.apps import AppConfig
 

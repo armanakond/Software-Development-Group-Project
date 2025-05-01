@@ -1,6 +1,5 @@
-#Author - Junayed Ahmed
-#Co Author - Sikindar Ali
-#Co Author - 
+#Author - Md Hoque
+#Co Author - Junayed Ahmed
 
 from django.contrib import admin
 from .models import HealthVote

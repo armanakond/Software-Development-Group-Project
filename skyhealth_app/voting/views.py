@@ -1,6 +1,6 @@
 #Author - Junayed Ahmed
-#Co Author - Sikandar Ali
 #Co Author - Md Hoque
+#Co Author - Sikandar Ali
 
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required

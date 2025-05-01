@@ -44,3 +44,20 @@ class HealthVote(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.session_name} - {self.session_date}"
+    
+class Session(models.Model):
+    name = models.CharField(max_length=100)
+    date = models.DateField()
+
+    class Meta:
+        ordering = ['date']
+
+    def __str__(self):
+        return f"{self.name} ({self.date})"
+
+
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name

@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import HealthVote
+from .models import Session, Team
 
 @login_required
 def session_view(request):
@@ -56,14 +57,17 @@ def voting_view(request):
 
 
 #Session inputs for healthvote
-    session_names = ["Sprint 1", "Sprint 2"]
-    session_dates = ["2025-05-01", "2025-05-15"]
-    team_names = ["Team A", "Team B"]
+    sessions = Session.objects.all()
+    teams    = Team.objects.all()
+
+    session_names = [s.name for s in sessions]
+    session_dates = [s.date.isoformat() for s in sessions]
+    team_names    = [t.name for t in teams]
 
     return render(request, 'voting/voting.html', {
         'session_names': session_names,
         'session_dates': session_dates,
-        'team_names': team_names
+        'team_names': team_names,
     })
 
 
@@ -106,3 +110,4 @@ def change_vote_view(request, pk):
         return redirect('dashboard')  # or wherever you want them to go after
 
     return render(request, 'voting/change_vote.html', {'vote': vote})
+

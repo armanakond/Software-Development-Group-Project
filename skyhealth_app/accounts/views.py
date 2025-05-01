@@ -1,6 +1,6 @@
 # Author - MD - Allowed registration values to be stored to the DB, fixed redirection to dashboard after registration is complete, implemented and fixed login redirection to dashboard
-# Co-Author -
-# Co-Author -
+# Co-Author - Junayed
+
 
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User

@@ -9,11 +9,12 @@ change_vote.html:
 {% load static %}
 
 {% block content %}
-<h1>Update Your Vote</h1>
+<h1>Update Your Vote</h1> <!-- Header to display the function of the page -->
 
-<form method="post">
+<form method="post"> <!-- form for starting the changing vote, allows the user to input data into the form-->
     {% csrf_token %}
 
+    
     <h2>1. Delivering Value</h2>
     <label><input type="radio" name="q1_vote" value="green" {% if vote.q1_vote == "green" %}checked{% endif %}> Green</label>
     <label><input type="radio" name="q1_vote" value="amber" {% if vote.q1_vote == "amber" %}checked{% endif %}> Amber</label>

@@ -3,11 +3,13 @@
 #Co Author - Sikandar Ali
 
 
+#Imports required for urls.py
 from django.urls import path
 from . import views
 
 
 
+#All urls that are involved in voting
 urlpatterns = [
     path('session/', views.session_view, name='session'),
     path('voting/', views.voting_view, name = 'voting' ),
